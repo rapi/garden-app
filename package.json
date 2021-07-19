@@ -3,22 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "android": "CAPACITOR_ANDROID_STUDIO_PATH=/snap/android-studio/current/android-studio/bin/studio.sh cap open android",
+    "start": "vue-cli-service serve"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "@capacitor-community/http": "^1.1.0",
+    "@capacitor/android": "^3.0.2",
+    "@capacitor/cli": "^3.0.2",
+    "@capacitor/core": "^3.0.2",
+    "@capacitor/ios": "^3.0.2",
+    "@ionic-native/http": "^5.34.0",
+    "@mdi/js": "^5.9.55",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.2",
+    "vuetify": "^2.5.6",
+    "vuex-persistedstate": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "core-js": "^3.15.2",
+    "deepmerge": "^4.2.2",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "node-sass": "^6.0.1",
+    "sass": "^1.32.13",
+    "sass-loader": "^10.2.0",
+    "vue-cli-plugin-vuetify": "~2.4.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.7.2",
+    "vuex": "^3.6.2"
   },
   "eslintConfig": {
     "root": true,
