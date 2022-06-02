@@ -10,7 +10,7 @@ const routes = [
     { path: '/hosts', component: Hosts , name:"hosts"},
     { path: '/zones', component: Zones , name:"zones"},
     { path: '/alarm', component: Time , name:"alarm"},
-    { path: '/', redirect: { name: 'hosts' }}
+    { path: '/', redirect: { name: 'alarm' }}
 
 ]
 
