@@ -28,6 +28,13 @@
       <v-btn
           class="ma-2"
           color="primary"
+          @click="check"
+      >
+        Verify
+      </v-btn>
+      <v-btn
+          class="ma-2"
+          color="primary"
           :disabled="!checked||loading"
           @click="save"
       >
@@ -48,31 +55,30 @@ export default {
       ip:this.$store.getters['ip']
     }
   },
-  watch:{
-    ip:{
-      immediate:true,
-      handler:async function (url){
-        this.loading=true;
-        const options = {
-          url: `http://${url}/api/info`,
-        };
-        try{
-          const response=await Http.get(options);
-          const {time}=JSON.parse(response.data)
-          if(time){
-            this.checked=true
-          }else
-            throw "Error"
-        }catch (e) {
-          this.checked=false
-        }
-        this.loading=false
-      }
-    }
-  },
+
   methods:{
     save(){
       this.$store.commit('updateIp',this.ip)
+    },
+    async check(){
+      this.loading=true;
+      console.log(`http://${this.ip}/api/info`)
+      const options = {
+        url: `http://${this.ip}/api/info`,
+      };
+      try{
+        const response=await Http.get(options);
+        console.log(response)
+        const {zones}=JSON.parse(response.data)
+        if(zones.length>0){
+          this.checked=true
+        }else
+          throw "Error"
+      }catch (e) {
+        console.log(e)
+        this.checked=false
+      }
+      this.loading=false
     }
   }
 }

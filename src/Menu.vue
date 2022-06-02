@@ -43,6 +43,7 @@ export default {
         ['mdi-alarm', 'Время','alarm'],
         ['mdi-inbox-arrow-down', 'Зоны','zones'],
         ['mdi-send', 'Настройка','hosts'],
+        ['mdi-key', 'Пароли','password'],
       ],
     }
   }

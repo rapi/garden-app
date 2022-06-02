@@ -1,11 +1,22 @@
 <template>
   <v-app id="inspire">
     <v-system-bar app>
-
       <v-icon x-large @click="drawer=!drawer">mdi-menu</v-icon>
-
       <v-spacer/>
       <div v-if="$store.getters['ip']">
+
+        <v-btn
+            class="mx-2"
+            fab
+            dark
+            small
+            @click="reboot"
+            color="primary"
+        >
+          <v-icon dark color="white">
+            mdi-refresh
+          </v-icon>
+        </v-btn>
         <v-btn
             class="mx-2"
             fab
@@ -93,9 +104,12 @@ export default {
       try {
         const {data} = await Http.get({url: `http://${this.$store.getters['ip']}/api/info`});
         this.enabled = JSON.parse(data).isWatering
+      } catch (e) {
+        setTimeout(()=>{
+          this.fetch()
+        },10000)
       }
       this.loading = false
-
     },
     async enable() {
       this.loading = true
@@ -104,12 +118,9 @@ export default {
       this.loading = false
 
     },
-    async stop() {
-      this.loading = true
-      await Http.get({url: `http://${this.$store.getters['ip']}/api/stop`});
-      await this.fetch()
-      this.loading = false
-
+    async reboot() {
+      await Http.get({url: `http://${this.$store.getters['ip']}/api/reboot`});
+      this.fetch()
     },
   }
 }

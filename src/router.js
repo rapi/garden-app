@@ -5,8 +5,10 @@ import VueRouter from "vue-router";
 import store from "./store/store";
 import Zones from "./Zones";
 import Time from "./Time";
+import Password from "@/Password";
 Vue.use(VueRouter)
 const routes = [
+    { path: '/password', component: Password , name:"password"},
     { path: '/hosts', component: Hosts , name:"hosts"},
     { path: '/zones', component: Zones , name:"zones"},
     { path: '/alarm', component: Time , name:"alarm"},
@@ -19,7 +21,7 @@ const router= new VueRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
-    if(!store.getters.ip && to.name!=='hosts'){
+    if(!store.getters.ip && to.name!=='hosts'&& to.name!=='password'){
         next({name:'hosts'})
     }
     // if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
